@@ -5,6 +5,7 @@
 import { existsSync } from "node:fs";
 import { join } from "node:path";
 import { ProductPage } from "./catalog.types";
+import { storagePublicUrl } from "./media-storage";
 
 const MEDIA_EXT = /\.(png|jpe?g|webp|gif|svg|avif|mp4|webm|ogg|mov|m4v|pdf)$/i;
 const MEDIA_ROOT = () => join(process.cwd(), "public", "media");
@@ -45,7 +46,9 @@ export function canonicalAssetUrl(url: string): string | null {
   return `https://www.maxspect.com${pathname}`;
 }
 
-export function localAssetPaths(canonicalUrl: string): { disk: string; publicPath: string } | null {
+export function localAssetPaths(
+  canonicalUrl: string,
+): { disk: string; publicPath: string; relative: string } | null {
   let pathname: string;
   try {
     pathname = decodePath(new URL(canonicalUrl).pathname);
@@ -60,15 +63,16 @@ export function localAssetPaths(canonicalUrl: string): { disk: string; publicPat
       .split("/")
       .map((segment) => encodeURIComponent(segment))
       .join("/");
-  return { disk: join(MEDIA_ROOT(), relative), publicPath };
+  return { disk: join(MEDIA_ROOT(), relative), publicPath, relative };
 }
 
 export function rewriteAssetUrl(url: string): string {
   const canonical = canonicalAssetUrl(url);
   if (!canonical) return url;
   const paths = localAssetPaths(canonical);
-  if (!paths || !existsSync(paths.disk)) return url;
-  return paths.publicPath;
+  if (!paths) return url;
+  if (existsSync(paths.disk)) return paths.publicPath;
+  return storagePublicUrl(paths.relative) ?? url;
 }
 
 export function localizeProduct<T>(value: T): T {

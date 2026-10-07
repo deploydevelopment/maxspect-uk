@@ -2,6 +2,7 @@ import "./lib/error-capture";
 
 import { consumeLastCapturedError } from "./lib/error-capture";
 import { renderErrorPage } from "./lib/error-page";
+import { redirectMissingMedia } from "./lib/media-fallback";
 
 type ServerEntry = {
   fetch: (request: Request, env: unknown, ctx: unknown) => Promise<Response> | Response;
@@ -47,6 +48,13 @@ function isH3SwallowedErrorBody(body: string): boolean {
 export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
     try {
+      const supabaseUrl =
+        env && typeof env === "object" && "SUPABASE_URL" in env
+          ? String((env as { SUPABASE_URL?: string }).SUPABASE_URL || "")
+          : "";
+      const mediaUrl = redirectMissingMedia(new URL(request.url).pathname, supabaseUrl || undefined);
+      if (mediaUrl) return Response.redirect(mediaUrl, 302);
+
       const handler = await getServerEntry();
       const response = await handler.fetch(request, env, ctx);
       return await normalizeCatastrophicSsrResponse(response);

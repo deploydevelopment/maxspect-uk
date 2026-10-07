@@ -1,3 +1,5 @@
+import { redirectMissingMedia } from "./src/lib/media-fallback";
+
 // @leadconnector/vite-tanstack-config already includes the following — do NOT add them manually
 // or the app will break with duplicate plugins:
 //   - tanstackStart, viteReact, tailwindcss, tsConfigPaths, nitro (build-only using cloudflare as a default target),
@@ -8,6 +10,24 @@
 import { defineConfig } from "@leadconnector/vite-tanstack-config";
 
 export default defineConfig({
+  vite: {
+    plugins: [
+      {
+        name: "media-storage-fallback",
+        configureServer(server) {
+          server.middlewares.use((req, res, next) => {
+            const pathname = req.url?.split("?")[0] ?? "";
+            const target = redirectMissingMedia(pathname);
+            if (!target) return next();
+            res.statusCode = 302;
+            res.setHeader("Location", target);
+            res.setHeader("Cache-Control", "public, max-age=86400");
+            res.end();
+          });
+        },
+      },
+    ],
+  },
   // Browser errors stay in the trusted parent-frame console-log flow;
   // do not expose the bridge collector on the public sandbox tunnel.
   devServerBridge: { errorCollector: false },
