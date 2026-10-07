@@ -3,6 +3,7 @@ import { useState, useMemo } from "react";
 import { getSparesShop } from "@/lib/spares.functions";
 import { HeaderNavbar } from "@/components/HeaderNavbar";
 import { SiteFooter } from "@/components/SiteFooter";
+import { Reveal } from "@/components/Reveal";
 import { useSparesBasket } from "@/components/SparesBasket";
 import { ChevronDown, Search, ShoppingCart, Plus } from "lucide-react";
 
@@ -59,7 +60,7 @@ function SparesStorePage() {
       <main className="flex-1 flex flex-col">
         {/* Banner */}
         <section className="bg-gradient-to-b from-slate-900 via-slate-900 to-slate-950 border-b border-slate-800 py-10 lg:py-14">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4 text-center">
+          <Reveal className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4 text-center">
             <p className="text-sm font-semibold text-cyan-400">Direct Official UK Spares</p>
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white">
               Maxspect Spare Parts & Replacement Hardware
@@ -68,14 +69,14 @@ function SparesStorePage() {
               Factory rotors, impellers, directional cages, and power transformers shipped directly
               from Maxspect UK.
             </p>
-          </div>
+          </Reveal>
         </section>
 
         {/* Store Workspace */}
         <section className="flex-1 bg-white text-slate-900 border-b border-slate-200">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
           {/* Controls Bar */}
-          <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
+          <Reveal className="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
             {groups.length > 0 && (
               <label className="relative sm:w-56 shrink-0">
                 <span className="sr-only">Range</span>
@@ -114,7 +115,7 @@ function SparesStorePage() {
               <span>Basket ({basket.count})</span>
               <span className="ml-1 font-mono">{money(basket.total)}</span>
             </button>
-          </div>
+          </Reveal>
 
           {error && <p className="text-sm text-slate-500">{error}</p>}
 
@@ -123,10 +124,10 @@ function SparesStorePage() {
           )}
 
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
-            {filteredSpares.map((part) => (
+            {filteredSpares.map((part, index) => (
+              <Reveal key={part.id} delay={(index % 6) * 60} className="h-full">
               <div
-                key={part.id}
-                className="rounded-2xl bg-white border border-slate-200 hover:border-cyan-400 transition-all flex flex-col justify-between overflow-hidden"
+                className="h-full rounded-2xl bg-white border border-slate-200 hover:border-cyan-400 transition-all flex flex-col justify-between overflow-hidden"
               >
                 <div>
                   <Link to="/spares/$productId" params={{ productId: part.id }} className="block">
@@ -180,6 +181,7 @@ function SparesStorePage() {
                   </button>
                 </div>
               </div>
+              </Reveal>
             ))}
           </div>
           </div>

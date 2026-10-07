@@ -19,19 +19,6 @@ const download = (path: string): ManualFile => ({ label: "Download", href: pdf(p
 
 export const manualSeries: ManualSeries[] = [
   {
-    title: "Professional Series",
-    manuals: [
-      {
-        title: "Commercial Gyre Pro User Manual V1.1",
-        files: [download("/images/Maxspectnew/manual/Maxspect_Gyre_Pro_User_Manual_V1.1.pdf")],
-      },
-      {
-        title: "Maxspect Commercial Floodlight Quick User Guide v1.1",
-        files: [download("/images/Products/Professional/manuals/Floodlight_EN_V1.1.pdf")],
-      },
-    ],
-  },
-  {
     title: "Jump Series",
     manuals: [
       {

@@ -4,6 +4,7 @@ import { getMapsEmbedKey, getStockists } from "@/lib/catalog.functions";
 import type { LiveStockist } from "@/lib/supply-engine.types";
 import { HeaderNavbar } from "@/components/HeaderNavbar";
 import { SiteFooter } from "@/components/SiteFooter";
+import { Reveal } from "@/components/Reveal";
 import {
   MapPin,
   Search,
@@ -90,7 +91,7 @@ function StockistPage() {
       <main className="flex-1 flex flex-col">
         {/* Banner Section */}
         <section className="bg-gradient-to-b from-slate-900 via-slate-900 to-slate-950 border-b border-slate-800 py-10 lg:py-14">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4 text-center">
+          <Reveal className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4 text-center">
             <p className="text-sm font-semibold tracking-wide text-cyan-400">Official UK Network</p>
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white">
               Find an Authorised Maxspect UK Stockist
@@ -98,14 +99,14 @@ function StockistPage() {
             <p className="max-w-2xl mx-auto text-sm sm:text-base text-slate-300">
               Locate aquatic centres and marine specialists who stock Maxspect across the UK.
             </p>
-          </div>
+          </Reveal>
         </section>
 
         {/* Filter & Map Workspace */}
         <section className="flex-1 bg-white text-slate-900 border-b border-slate-200">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
           {/* Search Controls */}
-          <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
+          <Reveal className="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
             <div className="flex-1 flex items-center gap-3 px-4 py-2.5 rounded-xl bg-white border border-slate-200">
               <Search className="w-4 h-4 text-cyan-600 shrink-0" />
               <input
@@ -116,7 +117,7 @@ function StockistPage() {
                 className="bg-transparent text-sm text-slate-800 placeholder:text-slate-400 outline-none w-full"
               />
             </div>
-          </div>
+          </Reveal>
 
           {error && (
             <p className="rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900">
@@ -127,7 +128,7 @@ function StockistPage() {
           {/* Interactive Split View: List + Google Maps Visualizer */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
             {/* Stockists List */}
-            <div className="lg:col-span-5 space-y-3 max-h-[680px] overflow-y-auto pr-1">
+            <Reveal className="lg:col-span-5 space-y-3 max-h-[680px] overflow-y-auto pr-1">
               <div className="flex items-center justify-between text-xs text-slate-500 font-mono px-1">
                 <span>Showing {filteredStockists.length} stores</span>
                 <span>Alphabetical</span>
@@ -201,10 +202,9 @@ function StockistPage() {
                   );
                 })
               )}
-            </div>
+            </Reveal>
 
-            {/* Google Map Mock/Embed Container */}
-            <div className="lg:col-span-7 h-[680px] rounded-2xl bg-white border border-slate-200 relative overflow-hidden flex flex-col">
+            <Reveal delay={100} className="lg:col-span-7 h-[680px] rounded-2xl bg-white border border-slate-200 relative overflow-hidden flex flex-col">
               {/* Top Map Action Bar */}
               <div className="p-4 bg-slate-50 border-b border-slate-200 flex items-center justify-between z-10">
                 <div className="flex items-center gap-2 text-xs text-slate-700 font-semibold">
@@ -274,7 +274,7 @@ function StockistPage() {
                   </div>
                 )}
               </div>
-            </div>
+            </Reveal>
           </div>
           </div>
         </section>

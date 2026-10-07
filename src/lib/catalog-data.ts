@@ -43,13 +43,6 @@ export const DEFAULT_CATEGORIES: ProductCategory[] = [
     sort_order: 3,
   },
   {
-    id: "cat-5",
-    slug: "professional-series",
-    name: "Professional Series",
-    description: "Commercial floodlights and Gyre Pro systems.",
-    sort_order: 5,
-  },
-  {
     id: "cat-6",
     slug: "smart-aquarium",
     name: "Smart Aquarium",

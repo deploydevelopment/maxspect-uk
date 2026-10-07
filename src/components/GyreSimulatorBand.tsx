@@ -3,6 +3,7 @@ import { Link } from "@tanstack/react-router";
 import { Waves } from "lucide-react";
 import { renderFlowBackdrop, seedParticles, type SimState } from "@/lib/tank-flow-renderer";
 import { standardConfig } from "@/lib/tank-wizard";
+import { Reveal } from "@/components/Reveal";
 
 function FlowField() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -65,32 +66,38 @@ export function GyreSimulatorBand() {
     <section className="relative flex min-h-[320px] items-center overflow-hidden bg-slate-950 text-white sm:min-h-[380px]">
       <FlowField />
       <div className="relative z-10 mx-auto w-full max-w-3xl px-4 py-14 text-center sm:px-6 sm:py-16">
-        <img
-          src="/media/images/Products/Innovate/gyre-300-ce-newlayout/gyre-300-7th1.png"
-          alt="Maxspect Gyre pump with cross-flow arrows"
-          className="mx-auto mb-5 w-full max-w-md h-auto"
-        />
-        <h2
-          className="text-2xl sm:text-3xl font-bold tracking-tight"
-          style={{
-            textShadow:
-              "0 0 16px rgba(2, 12, 40, 0.25), 0 0 32px rgba(8, 30, 80, 0.25), 0 2px 6px rgba(2, 6, 23, 0.2)",
-          }}
-        >
-          Try the Gyre Simulator
-        </h2>
-        <p className="mt-3 text-sm sm:text-base text-white/90">
-          See how Gyre cross-flow moves through your aquarium.
-        </p>
-        <Link
-          to="/flow-simulator"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-7 inline-flex items-center gap-2.5 rounded-xl border border-white/70 bg-white/10 px-7 py-3.5 text-base font-bold text-white backdrop-blur-md transition-colors hover:bg-white/20"
-        >
-          <Waves className="w-5 h-5" />
-          Open the simulator
-        </Link>
+        <Reveal>
+          <img
+            src="/media/images/Products/Innovate/gyre-300-ce-newlayout/gyre-300-7th1.png"
+            alt="Maxspect Gyre pump with cross-flow arrows"
+            className="mx-auto mb-5 w-full max-w-md h-auto"
+          />
+        </Reveal>
+        <Reveal delay={80}>
+          <h2
+            className="text-2xl sm:text-3xl font-bold tracking-tight"
+            style={{
+              textShadow:
+                "0 0 16px rgba(2, 12, 40, 0.25), 0 0 32px rgba(8, 30, 80, 0.25), 0 2px 6px rgba(2, 6, 23, 0.2)",
+            }}
+          >
+            Try the Gyre Simulator
+          </h2>
+          <p className="mt-3 text-sm sm:text-base text-white/90">
+            See how Gyre cross-flow moves through your aquarium.
+          </p>
+        </Reveal>
+        <Reveal delay={160}>
+          <Link
+            to="/flow-simulator"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-7 inline-flex items-center gap-2.5 rounded-xl border border-white/70 bg-white/10 px-7 py-3.5 text-base font-bold text-white backdrop-blur-md transition-colors hover:bg-white/20"
+          >
+            <Waves className="w-5 h-5" />
+            Open the simulator
+          </Link>
+        </Reveal>
       </div>
     </section>
   );

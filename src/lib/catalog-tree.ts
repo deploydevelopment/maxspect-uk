@@ -163,25 +163,6 @@ export const SOURCE_TREE: CatalogRange[] = [
     ],
   },
   {
-    slug: "professional-series",
-    name: "Professional Series",
-    description: "Commercial floodlights and Gyre Pro.",
-    source_url: "https://www.maxspect.com/en/professional-series",
-    sub_ranges: [
-      {
-        slug: "floodlights-and-gyre-pro",
-        name: "Floodlights and Gyre Pro",
-        products: [
-          p(
-            "floodlights-and-gyre-pro",
-            "Floodlights and Gyre Pro",
-            "https://www.maxspect.com/en/professional-series/1025-floodlights-and-gyre-pro",
-          ),
-        ],
-      },
-    ],
-  },
-  {
     slug: "smart-aquarium",
     name: "Smart Aquarium",
     description: "All-in-one aquariums and the Lagoon system.",

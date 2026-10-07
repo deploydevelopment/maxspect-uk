@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { Search, ArrowRight } from "lucide-react";
 import { SOURCE_TREE } from "@/lib/catalog-tree";
+import { Reveal } from "@/components/Reveal";
 
 interface RangeProduct {
   id: string;
@@ -71,7 +72,7 @@ export function ProductCatalog() {
     <section id="products" className="scroll-mt-20 py-20 bg-white text-slate-900 border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 space-y-12">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-          <div className="space-y-3">
+          <Reveal className="space-y-3">
             <p className="text-sm font-semibold tracking-wide text-cyan-600">
               Official 2026 Maxspect Product Range
             </p>
@@ -82,8 +83,9 @@ export function ProductCatalog() {
               Browse our complete catalog of high-efficiency wavemakers, precision skimmers, full
               spectrum LED lights, and biological media distributed across the UK.
             </p>
-          </div>
+          </Reveal>
 
+          <Reveal delay={90}>
           <label className="flex w-72 max-w-full shrink-0 items-center gap-2.5 rounded-xl border border-slate-300 bg-slate-100 px-3.5 py-3">
             <Search className="h-5 w-5 shrink-0 text-slate-700" />
             <input
@@ -94,8 +96,10 @@ export function ProductCatalog() {
               className="w-full bg-transparent text-base font-bold text-slate-900 placeholder:font-bold placeholder:text-slate-600 focus:outline-none"
             />
           </label>
+          </Reveal>
         </div>
 
+        <Reveal>
         <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
           {RANGES.map((range) => (
             <button
@@ -112,12 +116,13 @@ export function ProductCatalog() {
             </button>
           ))}
         </div>
+        </Reveal>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredProducts.map((product) => (
+          {filteredProducts.map((product, index) => (
+            <Reveal key={product.id} delay={(index % 3) * 90} className="h-full">
             <div
-              key={product.id}
-              className="group relative rounded-2xl bg-white border border-slate-200 hover:border-cyan-400 p-5 flex flex-col justify-between transition-colors"
+              className="group relative h-full rounded-2xl bg-white border border-slate-200 hover:border-cyan-400 p-5 flex flex-col justify-between transition-colors"
             >
               <div className="space-y-4">
                 <div className="relative h-52 rounded-xl bg-slate-100 overflow-hidden">
@@ -158,6 +163,7 @@ export function ProductCatalog() {
                 </Link>
               </div>
             </div>
+            </Reveal>
           ))}
         </div>
       </div>

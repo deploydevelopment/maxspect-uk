@@ -27,7 +27,6 @@ const CATEGORY_ID: Record<string, string> = {
   "jump-series": "cat-2",
   "nano-tech-bio-media": "cat-3",
   "coral-tools": "cat-4",
-  "professional-series": "cat-5",
   "smart-aquarium": "cat-6",
   accessories: "cat-7",
 };

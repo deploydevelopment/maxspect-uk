@@ -13,7 +13,7 @@ export const Route = createFileRoute("/ranges")({
       {
         name: "description",
         content:
-          "The Maxspect UK catalogue: Innovate, Jump, Professional, Smart Aquarium, Nano-Tech, and Accessories.",
+          "The Maxspect UK catalogue: Innovate, Jump, Smart Aquarium, Nano-Tech, and Accessories.",
       },
     ],
   }),

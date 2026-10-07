@@ -12,7 +12,7 @@ export const Route = createFileRoute("/manuals")({
       {
         name: "description",
         content:
-          "English product manuals for Maxspect Professional, Jump, Innovate, Smart Aquarium, Nano-Tech, and Coral Tools equipment.",
+          "English product manuals for Maxspect Jump, Innovate, Smart Aquarium, Nano-Tech, and Coral Tools equipment.",
       },
       { property: "og:title", content: "Maxspect UK Product Manuals" },
       {

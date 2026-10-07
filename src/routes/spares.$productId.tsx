@@ -3,6 +3,7 @@ import { useState } from "react";
 import { getSupplyProduct } from "@/lib/spares.functions";
 import { HeaderNavbar } from "@/components/HeaderNavbar";
 import { SiteFooter } from "@/components/SiteFooter";
+import { Reveal } from "@/components/Reveal";
 import { useSparesBasket } from "@/components/SparesBasket";
 import { ChevronLeft, Minus, Plus } from "lucide-react";
 
@@ -91,6 +92,7 @@ function SpareProductPage() {
       <HeaderNavbar />
       <main className="flex-1 flex flex-col bg-white text-slate-900">
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
+          <Reveal>
           <Link
             to="/spares"
             className="inline-flex items-center gap-1 text-sm text-slate-500 hover:text-slate-900 mb-6"
@@ -98,11 +100,14 @@ function SpareProductPage() {
             <ChevronLeft className="w-4 h-4" />
             All spare parts
           </Link>
+          </Reveal>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-            <SpareGallery images={product.images} thumbnails={product.thumbnails} />
+            <Reveal>
+              <SpareGallery images={product.images} thumbnails={product.thumbnails} />
+            </Reveal>
 
-            <div className="space-y-4">
+            <Reveal delay={100} className="space-y-4">
               {product.sku ? (
                 <p className="text-xs font-mono text-cyan-700">{product.sku}</p>
               ) : null}
@@ -153,7 +158,7 @@ function SpareProductPage() {
                   Add to Basket
                 </button>
               </div>
-            </div>
+            </Reveal>
           </div>
         </section>
       </main>

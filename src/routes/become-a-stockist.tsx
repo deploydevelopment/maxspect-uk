@@ -3,6 +3,7 @@ import { useServerFn } from "@tanstack/react-start";
 import { useState, type FormEvent } from "react";
 import { HeaderNavbar } from "@/components/HeaderNavbar";
 import { SiteFooter } from "@/components/SiteFooter";
+import { Reveal } from "@/components/Reveal";
 import { submitStockistApplication } from "@/lib/stockist-application.functions";
 
 export const Route = createFileRoute("/become-a-stockist")({
@@ -108,7 +109,7 @@ function BecomeStockistPage() {
       <HeaderNavbar />
       <main className="flex-1 flex flex-col">
         <section className="bg-gradient-to-b from-slate-900 via-slate-900 to-slate-950 border-b border-slate-800 py-10 lg:py-14">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4 text-center">
+          <Reveal className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4 text-center">
             <Link
               to="/stockists"
               className="text-sm font-semibold tracking-wide text-cyan-400 hover:text-cyan-300"
@@ -122,14 +123,15 @@ function BecomeStockistPage() {
               If you have a pet shop or other outlet in the UK or abroad, tell us about the business.
               One of the team will get back to you.
             </p>
-          </div>
+          </Reveal>
         </section>
 
         <section className="flex-1 bg-white text-slate-900 border-b border-slate-200">
           <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             <form onSubmit={handleSubmit} className="space-y-8">
-              {sections.map((section) => (
-                <fieldset key={section} className="space-y-4">
+              {sections.map((section, index) => (
+                <Reveal key={section} delay={index * 80}>
+                <fieldset className="space-y-4">
                   <legend className="text-sm font-bold text-slate-900">{section}</legend>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {fields
@@ -148,8 +150,10 @@ function BecomeStockistPage() {
                       ))}
                   </div>
                 </fieldset>
+                </Reveal>
               ))}
 
+              <Reveal delay={sections.length * 80}>
               <fieldset className="space-y-4">
                 <legend className="text-sm font-bold text-slate-900">About your business</legend>
                 <label className="block space-y-1">
@@ -165,6 +169,7 @@ function BecomeStockistPage() {
                   />
                 </label>
               </fieldset>
+              </Reveal>
 
               <input name="bottest" type="text" tabIndex={-1} autoComplete="off" className="hidden" />
 
@@ -184,6 +189,7 @@ function BecomeStockistPage() {
                 </div>
               )}
 
+              <Reveal>
               <button
                 type="submit"
                 disabled={pending}
@@ -191,6 +197,7 @@ function BecomeStockistPage() {
               >
                 {pending ? "Sending…" : "Apply"}
               </button>
+              </Reveal>
             </form>
           </div>
         </section>

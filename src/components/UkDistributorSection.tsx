@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import { toast } from "sonner";
 import { contact } from "@/lib/contact";
+import { Reveal } from "@/components/Reveal";
 
 const UK_HUB_BACKGROUND =
   "/media/images/Products/Innovate/ethereal%20infinite/rgb_ethereal3.webp";
@@ -80,7 +81,7 @@ export function UkDistributorSection() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-16 sm:py-20 space-y-16">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            <div className="lg:col-span-8 space-y-4">
+            <Reveal className="lg:col-span-8 space-y-4">
               <p className="text-xs font-bold tracking-wide text-cyan-300">
                 Official United Kingdom Representative
               </p>
@@ -106,9 +107,9 @@ export function UkDistributorSection() {
                   <span>Authorised UK Service & Repair Workshop</span>
                 </div>
               </div>
-            </div>
+            </Reveal>
 
-            <div className="lg:col-span-4 bg-slate-950/20 backdrop-blur-xl p-6 rounded-2xl border border-slate-700/30 space-y-3">
+            <Reveal delay={100} className="lg:col-span-4 bg-slate-950/20 backdrop-blur-xl p-6 rounded-2xl border border-slate-700/30 space-y-3">
               <h3 className="text-sm font-bold text-white flex items-center gap-2">
                 <Phone className="w-4 h-4 text-cyan-400" /> Direct UK Support Line
               </h3>
@@ -123,12 +124,12 @@ export function UkDistributorSection() {
                 {contact.phone.display}
               </a>
               <div className="text-[11px] text-slate-400">{contact.hours}</div>
-            </div>
+            </Reveal>
           </div>
 
         {/* Support Portal & Downloads Grid */}
         <div id="support" className="space-y-8">
-          <div className="text-center space-y-2 max-w-2xl mx-auto">
+          <Reveal className="text-center space-y-2 max-w-2xl mx-auto">
             <p className="text-xs font-bold tracking-wide text-cyan-300">
               Support & Resources
             </p>
@@ -139,11 +140,10 @@ export function UkDistributorSection() {
               Access official documentation, Syna-G Cloud app installation links, and latest
               firmware releases for your Maxspect devices.
             </p>
-          </div>
+          </Reveal>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* Manuals */}
-            <div className="bg-slate-950/20 backdrop-blur-xl p-6 rounded-2xl border border-slate-700/30 hover:border-cyan-500/40 transition-colors space-y-4">
+            <Reveal className="bg-slate-950/20 backdrop-blur-xl p-6 rounded-2xl border border-slate-700/30 hover:border-cyan-500/40 transition-colors space-y-4">
               <div className="w-12 h-12 rounded-xl bg-blue-950 border border-blue-800 flex items-center justify-center text-cyan-400">
                 <FileText className="w-6 h-6" />
               </div>
@@ -158,10 +158,9 @@ export function UkDistributorSection() {
               >
                 View product manuals
               </Link>
-            </div>
+            </Reveal>
 
-            {/* Mobile Apps */}
-            <div className="bg-slate-950/20 backdrop-blur-xl p-6 rounded-2xl border border-slate-700/30 hover:border-cyan-500/40 transition-colors space-y-4">
+            <Reveal delay={90} className="bg-slate-950/20 backdrop-blur-xl p-6 rounded-2xl border border-slate-700/30 hover:border-cyan-500/40 transition-colors space-y-4">
               <div className="w-12 h-12 rounded-xl bg-blue-950 border border-blue-800 flex items-center justify-center text-cyan-400">
                 <Smartphone className="w-6 h-6" />
               </div>
@@ -188,10 +187,9 @@ export function UkDistributorSection() {
                   Android
                 </a>
               </div>
-            </div>
+            </Reveal>
 
-            {/* Warranty & Registration */}
-            <div className="bg-slate-950/20 backdrop-blur-xl p-6 rounded-2xl border border-slate-700/30 hover:border-cyan-500/40 transition-colors space-y-4">
+            <Reveal delay={180} className="bg-slate-950/20 backdrop-blur-xl p-6 rounded-2xl border border-slate-700/30 hover:border-cyan-500/40 transition-colors space-y-4">
               <div className="w-12 h-12 rounded-xl bg-blue-950 border border-blue-800 flex items-center justify-center text-cyan-400">
                 <ShieldCheck className="w-6 h-6" />
               </div>
@@ -205,20 +203,21 @@ export function UkDistributorSection() {
               >
                 Register Product Serial Number
               </Link>
-            </div>
+            </Reveal>
           </div>
         </div>
 
         {/* UK Inquiry / Dealer Contact Form */}
         <div className="space-y-8">
-          <div className="text-center space-y-2 max-w-xl mx-auto">
+          <Reveal className="text-center space-y-2 max-w-xl mx-auto">
             <h3 className="text-2xl font-bold text-white">Get in Touch with Maxspect UK</h3>
             <p className="text-xs text-slate-400">
               Whether you are a retailer looking to become an authorised stockist or an end-user
               needing technical help.
             </p>
-          </div>
+          </Reveal>
 
+          <Reveal delay={80}>
           <form onSubmit={handleSubmit} className="max-w-2xl mx-auto space-y-4">
             <div className="flex gap-4 p-1 rounded-xl bg-slate-900 border border-slate-800 text-xs font-semibold">
               <button
@@ -310,6 +309,7 @@ export function UkDistributorSection() {
               <Send className="w-4 h-4" /> Send Inquiry to UK Team
             </button>
           </form>
+          </Reveal>
         </div>
       </div>
     </section>

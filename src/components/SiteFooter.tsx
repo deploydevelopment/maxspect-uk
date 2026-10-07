@@ -33,7 +33,6 @@ export function SiteFooter() {
             </a>
           </div>
 
-          {/* Product Series */}
           <div className="space-y-3">
             <h4 className="text-sm font-bold text-white uppercase tracking-wider">
               Product Series
@@ -60,15 +59,6 @@ export function SiteFooter() {
               <li>
                 <Link
                   to="/range/$slug"
-                  params={{ slug: "professional-series" }}
-                  className="hover:text-cyan-300 transition-colors"
-                >
-                  Professional Series
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/range/$slug"
                   params={{ slug: "smart-aquarium" }}
                   className="hover:text-cyan-300 transition-colors"
                 >
@@ -87,7 +77,6 @@ export function SiteFooter() {
             </ul>
           </div>
 
-          {/* Support */}
           <div className="space-y-3">
             <h4 className="text-sm font-bold text-white uppercase tracking-wider">UK Support</h4>
             <ul className="space-y-2 text-slate-400">
@@ -114,7 +103,6 @@ export function SiteFooter() {
             </ul>
           </div>
 
-          {/* Global Languages & Patents */}
           <div className="space-y-3">
             <h4 className="text-sm font-bold text-white uppercase tracking-wider">
               Patents & Legal
@@ -159,7 +147,6 @@ export function SiteFooter() {
           </div>
         </div>
 
-        {/* Sub-footer Bottom Bar */}
         <div className="pt-8 border-t border-slate-900 text-center text-[11px] text-slate-500">
           © {new Date().getFullYear()} BCUK Aquatics Limited.
         </div>
